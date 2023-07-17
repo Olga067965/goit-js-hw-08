@@ -22,26 +22,9 @@ const galleryMarkup = galleryItems
   .map((item) => createGalleryItemMarkup(item))
   .join("");
 
-galleryList.insertAdjacentHTML("beforeend", galleryMarkup);
+  galleryList.innerHTML = galleryMarkup;
 
-galleryList.addEventListener("click", (event) => {
-  event.preventDefault();
-
-  const { target } = event;
-
-  if (target.classList.contains("gallery__image")) {
-    const source = target.dataset.source;
-
-    const instance = basicLightbox.create(`
-      <img src="${source}" alt="${target.alt}" />
-    `);
-
-    instance.show();
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    basicLightbox.close();
-  }
-});
+  const gallery = new SimpleLightbox(".gallery__link", {
+    captionsData: 'alt',
+    captionDelay: 250
+  });
