@@ -10,7 +10,6 @@ form.addEventListener('input', event => {
     message: messageInput.value,
   };
 
-  // збережено об'єкт з полями у локальному сховищі
   localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 });
 
@@ -24,7 +23,6 @@ function populateFormFields() {
   }
 }
 
-// викличено функцію при завантаженні сторінки
 window.addEventListener('DOMContentLoaded', populateFormFields);
 
 form.addEventListener(
@@ -35,7 +33,6 @@ form.addEventListener(
       message: messageInput.value,
     };
 
-    // збережено об'єкт з полями у локальному сховищі
     localStorage.setItem('feedback-form-state', JSON.stringify(formData));
   }, 500)
 );
